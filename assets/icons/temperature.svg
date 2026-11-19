@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
+  <circle cx="48" cy="48" r="48" fill="#FFE6E9"/>
+  <circle cx="48" cy="48" r="38" fill="#FFFFFF"/>
+  <!-- Thermometer Body -->
+  <path d="M50 47.5V30C50 27.7909 48.2091 26 46 26C43.7909 26 42 27.7909 42 30V47.5C39.5442 49.3364 38.5 52.5 39.5 55.5C40.8 59.5 45 62 48.5 61.5C52 61 54.5 58 54 54.5C53.6 51.8 52 49.2 50 47.5Z" fill="#FFE6E9" stroke="#072635" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Mercury Bulb & Column -->
+  <circle cx="46.5" cy="54.5" r="4.5" fill="#FF6262"/>
+  <rect x="45" y="36" width="3" height="15" rx="1.5" fill="#FF6262"/>
+  <!-- Ticks -->
+  <path d="M53 32H57M53 38H57M53 44H57" stroke="#072635" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,857 @@
+/* ==========================================================================
+   Tech.Care HealthCare Dashboard Styles
+   Based on Adobe XD Design Specifications & Coalition Technologies Style Guide
+   ========================================================================== */
+
+/* Import Google Font Manrope */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Design Tokens & CSS Custom Properties */
+:root {
+  /* Colors */
+  --bg-page: #F6F7F8;
+  --bg-card: #FFFFFF;
+  --primary-teal: #01F0D0;
+  --primary-teal-hover: #00dec0;
+  --active-patient-bg: #D8FCF7;
+  --text-primary: #072635;
+  --text-secondary: #707070;
+  --border-color: #EDEDED;
+  --divider-color: #F6F6F6;
+  --table-header-bg: #F6F7F8;
+  
+  /* Chart Colors */
+  --chart-box-bg: #F4F0FE;
+  --systolic-color: #C26EB4;
+  --systolic-dot: #E66FD2;
+  --diastolic-color: #7E6CAB;
+  --diastolic-dot: #8C6FE6;
+
+  /* Vital Cards Backgrounds */
+  --vital-respiratory-bg: #E0F3FA;
+  --vital-temperature-bg: #FFE6E9;
+  --vital-heart-bg: #FFE6F1;
+
+  /* Typography */
+  --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Border Radius */
+  --radius-pill: 70px;
+  --radius-btn: 41px;
+  --radius-card: 16px;
+  --radius-vital: 12px;
+  --radius-tag: 24px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-page);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Wrapper */
+.app-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 18px 18px 36px 18px;
+}
+
+/* ==========================================================================
+   1. Top Navigation Bar (Header)
+   ========================================================================== */
+.main-header {
+  height: 72px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+  z-index: 100;
+  margin-bottom: 32px;
+}
+
+/* Logo */
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.header-brand a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+}
+
+/* Nav Menu */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.nav-item img, .nav-item svg {
+  width: 16px;
+  height: 17px;
+}
+
+.nav-item:hover {
+  background-color: #f0fbf9;
+}
+
+.nav-item.active {
+  background-color: var(--primary-teal);
+  color: var(--text-primary);
+}
+
+/* Doctor Profile Section */
+.header-user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doctor-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doctor-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.doctor-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.doctor-role {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.user-divider {
+  width: 1px;
+  height: 44px;
+  background-color: var(--border-color);
+  margin: 0 4px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background-color: var(--divider-color);
+}
+
+/* ==========================================================================
+   2. Main Dashboard Grid
+   ========================================================================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 367px minmax(0, 1fr) 367px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Card Base */
+.dashboard-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+}
+
+.card-title-lg {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+/* ==========================================================================
+   3. Left Sidebar: Patients List
+   ========================================================================== */
+.patients-sidebar {
+  padding: 20px;
+  max-height: 1054px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.patient-list {
+  list-style: none;
+  overflow-y: auto;
+  max-height: 960px;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E3E4E6;
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #CBD0D4;
+}
+
+/* Patient List Item */
+.patient-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  text-decoration: none;
+  color: inherit;
+}
+
+.patient-item:hover {
+  background-color: #F8F9FA;
+}
+
+.patient-item.active {
+  background-color: var(--active-patient-bg);
+}
+
+.patient-item-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-item-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.patient-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-item-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.patient-item-meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.patient-item-more {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  padding: 4px;
+}
+
+.patient-item-more:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. Center Column: Main Content
+   ========================================================================== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Diagnosis History Card */
+.diagnosis-history-card {
+  padding: 20px;
+}
+
+.diagnosis-header {
+  margin-bottom: 24px;
+}
+
+/* Blood Pressure Chart Container */
+.blood-pressure-box {
+  background-color: var(--chart-box-bg);
+  border-radius: var(--radius-card);
+  padding: 16px 16px 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bp-chart-section {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.bp-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bp-timeframe-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.bp-timeframe-dropdown:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.chart-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 210px;
+}
+
+/* BP Metrics Stats (Right Column of Chart Box) */
+.bp-metrics-panel {
+  width: 148px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.bp-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bp-metric-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.systolic {
+  background-color: var(--systolic-dot);
+}
+
+.status-dot.diastolic {
+  background-color: var(--diastolic-dot);
+}
+
+.bp-metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bp-metric-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.bp-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #CBC8D4;
+}
+
+/* Vital Cards Row */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.vital-card {
+  border-radius: var(--radius-vital);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vital-card.respiratory {
+  background-color: var(--vital-respiratory-bg);
+}
+
+.vital-card.temperature {
+  background-color: var(--vital-temperature-bg);
+}
+
+.vital-card.heart-rate {
+  background-color: var(--vital-heart-bg);
+}
+
+.vital-icon-wrap {
+  width: 80px;
+  height: 80px;
+}
+
+.vital-icon-wrap img, .vital-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.vital-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.vital-value {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.vital-status {
+  font-size: 14px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Diagnostic List Card */
+.diagnostic-list-card {
+  padding: 20px;
+}
+
+.diagnostic-table-wrapper {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.diagnostic-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.diagnostic-table thead tr {
+  background-color: var(--table-header-bg);
+}
+
+.diagnostic-table th {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.diagnostic-table th:first-child {
+  border-top-left-radius: var(--radius-tag);
+  border-bottom-left-radius: var(--radius-tag);
+  width: 32%;
+}
+
+.diagnostic-table th:nth-child(2) {
+  width: 48%;
+}
+
+.diagnostic-table th:last-child {
+  border-top-right-radius: var(--radius-tag);
+  border-bottom-right-radius: var(--radius-tag);
+  width: 20%;
+}
+
+.diagnostic-table tbody tr td {
+  padding: 18px 16px;
+  font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.diagnostic-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   5. Right Column: Patient Profile & Lab Results
+   ========================================================================== */
+.patient-details-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Patient Profile Card */
+.patient-profile-card {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar-wrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* Profile Details List */
+.profile-details-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.detail-icon-wrap {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.detail-icon-wrap img, .detail-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Action Button */
+.btn-primary-pill {
+  width: 220px;
+  height: 41px;
+  background-color: var(--primary-teal);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary-pill:hover {
+  background-color: var(--primary-teal-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(1, 240, 208, 0.4);
+}
+
+.btn-primary-pill:active {
+  transform: translateY(0);
+}
+
+/* Lab Results Card */
+.lab-results-card {
+  padding: 20px;
+}
+
+.lab-results-header {
+  margin-bottom: 16px;
+}
+
+.lab-results-list {
+  list-style: none;
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 6px;
+}
+
+.lab-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.lab-result-item:hover, .lab-result-item.highlight {
+  background-color: #F6F7F8;
+}
+
+.lab-result-name {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.lab-download-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.lab-download-btn:hover {
+  transform: translateY(1px);
+}
+
+/* Loading & Error States */
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  gap: 10px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(1, 240, 208, 0.2);
+  border-top-color: var(--primary-teal);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   6. Responsive Layout Breakpoints
+   ========================================================================== */
+@media (max-width: 1400px) {
+  .dashboard-grid {
+    grid-template-columns: 320px minmax(0, 1fr) 320px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+  
+  .patient-details-sidebar {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-header {
+    height: auto;
+    padding: 16px 20px;
+    border-radius: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-around;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patients-sidebar {
+    max-height: 400px;
+  }
+
+  .patient-details-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .blood-pressure-box {
+    grid-template-columns: 1fr;
+  }
+
+  .vitals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 12px;
+  }
+
+  .main-header {
+    border-radius: 16px;
+  }
+
+  .header-user-section .doctor-info {
+    display: none;
+  }
+
+  .vitals-grid {
+    grid-template-columns: 1fr;
+  }
+}
